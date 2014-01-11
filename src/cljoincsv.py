@@ -1,0 +1,28 @@
+import joincsv
+import sys
+from argparse import ArgumentParser
+
+"""
+A command line interface for JoinCSV
+"""
+
+class FullHelpArgParser(ArgumentParser):
+    """
+    An ArgumentParser that outputs the full usage
+    message if there is an error parsing the arguments.
+    """
+    
+    def error(self, message):
+        sys.stderr.write('error: %s\n' % message)
+        self.print_help()
+        sys.exit(2)
+
+if __name__ == '__main__':
+    parser = FullHelpArgParser()
+    parser.add_argument('input', help="The input filename. It must be in .csv format. The first row is read as field headers. The First column is used as the value to join records on.")
+    parser.add_argument('output', help="The output filename. For example: output.csv")
+    args = parser.parse_args()
+    
+    with open(args.input, 'rb') as inputCSVFile, open(args.output, 'wb') as outputCSVFile:
+        joiner = joincsv.CSVRecordJoiner(inputCSVFile)
+        joiner.save(outputCSVFile)
