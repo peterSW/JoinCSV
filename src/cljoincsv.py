@@ -23,6 +23,5 @@ if __name__ == '__main__':
     parser.add_argument('output', help="The output filename. For example: output.csv")
     args = parser.parse_args()
     
-    with open(args.input, 'rb') as inputCSVFile, open(args.output, 'wb') as outputCSVFile:
-        joiner = joincsv.CSVRecordJoiner(inputCSVFile)
-        joiner.save(outputCSVFile)
+    joiner = joincsv.RecordJoiner(args.input)
+    joiner.save(args.output)

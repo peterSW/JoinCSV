@@ -1,34 +1,34 @@
 
-def join_records_on_id(inputTable):
-    rowIt = iter(inputTable)
-    inputHeader = rowIt.next()
+def join_records_on_id(input_table):
+    row_it = iter(input_table)
+    input_header = row_it.next()
 
-    joiner = RecordJoiner(rowIt)
+    joiner = RecordJoiner(row_it)
     
-    result = [make_header(inputHeader, joiner.count())]
+    result = [make_header(input_header, joiner.count())]
     result.extend(joiner.result())
     return result
     
-def make_header(header, numRepeat):
-    keyFieldName = header[0]
-    result = [keyFieldName]
-    otherFields = header[1:]
-    for i in range(numRepeat):
-        for field in otherFields:
+def make_header(input_header, num_repeat):
+    key_field_name = input_header[0]
+    result = [key_field_name]
+    other_fields = input_header[1:]
+    for i in range(num_repeat):
+        for field in other_fields:
             result.append(append_index(field, i+1))
     return result
 
-def append_index(fieldName, index):
-    return ' '.join((fieldName, str(index)))
+def append_index(field_name, index):
+    return ' '.join((field_name, str(index)))
 
 class RecordJoiner():
     def __init__(self, records):
         self.records_by_id = {}
         self.ordered_keys = []
         
-        self.parseRecords(records)
+        self.parse_records(records)
         
-    def parseRecords(self, records):
+    def parse_records(self, records):
         for record in records:
             key = record[0]
             if key not in self.records_by_id:
@@ -37,24 +37,22 @@ class RecordJoiner():
             self.records_by_id[key].append(record[1:])
         
     def result(self):
-        results = [self.processKey(key) for key in self.ordered_keys]
+        results = [self.process_key(key) for key in self.ordered_keys]
         
         return results
-    
-            
-    def processKey(self, key):
+        
+    def process_key(self, key):
         result = [key]
-        for subRecord in self.records_by_id[key]:
-            result.extend(subRecord)
+        for sub_record in self.records_by_id[key]:
+            result.extend(sub_record)
         return result
-    
+        
     def count(self):
-        return max([self.numRecordsForKey(key) for key in self.ordered_keys])
-
-    def numRecordsForKey(self, key):
+        return max([self.num_records_for_key(key) for key in self.ordered_keys])
+        
+    def num_records_for_key(self, key):
         return len(self.records_by_id[key])
-    
-    
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

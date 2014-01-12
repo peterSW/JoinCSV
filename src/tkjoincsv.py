@@ -1,11 +1,22 @@
 
 import tkFileDialog
 import joincsv
+import os.path
 
 if __name__ == '__main__':
-    filetypes=[("csv", "*.csv")]
-    inputFile = tkFileDialog.askopenfile(mode='rb', filetypes=filetypes)
-    outputFile = tkFileDialog.asksaveasfile(mode='wb', filetypes=filetypes, defaultextension=".csv")
+    filetypes=[("Spreadsheets", "*.csv"),
+               ("Spreadsheets", "*.xls"),
+               ("Spreadsheets", "*.xlsx")]
     
-    joiner = joincsv.CSVRecordJoiner(inputFile)
-    joiner.save(outputFile)
+    input_filename = tkFileDialog.askopenfilename(filetypes=filetypes)
+    
+    if not os.path.isfile(input_filename):
+        exit(0)
+    
+    output_filename = tkFileDialog.asksaveasfilename(filetypes=filetypes, defaultextension=".csv")
+    if not os.path.isfile(output_filename):
+        exit(0)
+        
+    joiner = joincsv.RecordJoiner(input_filename)
+    joiner.save(output_filename)
+    
