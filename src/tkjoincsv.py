@@ -2,13 +2,17 @@
 import tkFileDialog
 import joincsv
 import os.path
+import sys
 
 if __name__ == '__main__':
     filetypes=[("Spreadsheets", "*.csv"),
                ("Spreadsheets", "*.xls"),
                ("Spreadsheets", "*.xlsx")]
     
-    input_filename = tkFileDialog.askopenfilename(filetypes=filetypes)
+    if len(sys.argv) == 2:
+        input_filename = sys.argv[1]
+    else:
+        input_filename = tkFileDialog.askopenfilename(filetypes=filetypes)
     
     if not os.path.isfile(input_filename):
         exit(0)
