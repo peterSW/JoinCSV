@@ -15,9 +15,9 @@ class TestJoinCSV(unittest.TestCase):
                     self.fail("Expected: " + expectedLine + "  Actual: " + actualLine)
     
     def setUp(self):
-        self.inputFN = "input.csv"
-        self.outputFN = "output.csv"
-        self.expectedOutputFN = "expected_output.csv"
+        self.inputFN = "tests/input.csv"
+        self.outputFN = "tests/output.csv"
+        self.expectedOutputFN = "tests/expected_output.csv"
     
     def testJoinCSV(self):
         joiner = joincsv.RecordJoiner(self.inputFN)
@@ -30,9 +30,9 @@ class TestJoinCSV(unittest.TestCase):
 @unittest.skip("Result comparison not working")
 class TestJoinXLSX(TestJoinCSV):
     def setUp(self):
-        self.inputFN = "input.xlsx"
-        self.outputFN = "output.xlsx"
-        self.expectedOutputFN = "expected_output.xlsx"
+        self.inputFN = "tests/input.xlsx"
+        self.outputFN = "tests/output.xlsx"
+        self.expectedOutputFN = "tests/expected_output.xlsx"
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

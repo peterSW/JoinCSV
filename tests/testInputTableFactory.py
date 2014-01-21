@@ -8,10 +8,10 @@ class TestInputTableFactory(unittest.TestCase):
         self.factory = table_io.InputTableFactory()
 
     def test_xlsx(self):
-        input_table = self.factory.open_input_table("input.xlsx")
+        input_table = self.factory.open_input_table("tests/input.xlsx")
         self.assertIsInstance(input_table, table_io.XlrdTable)
     def test_csv(self):
-        input_table = self.factory.open_input_table("input.csv")
+        input_table = self.factory.open_input_table("tests/input.csv")
         
 
 class TestTypeLookup(unittest.TestCase):

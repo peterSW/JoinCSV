@@ -7,7 +7,7 @@ class Test(unittest.TestCase):
 
     def getFirstSheet(self):
         f = table_io.InputTableFactory()
-        return f.open_input_table("input.xlsx")
+        return f.open_input_table("tests/input.xlsx")
         
     def test_row_iteration(self):
         for row in self.getFirstSheet():
@@ -19,14 +19,14 @@ class Test(unittest.TestCase):
 class TestCSV(Test):
     def getFirstSheet(self):
         f = table_io.InputTableFactory()
-        return f.open_input_table("input.csv")
+        return f.open_input_table("tests/input.csv")
     
 import xlwt
 
 class TestXlwt(unittest.TestCase):
     def test_xlwt(self):
         data = [["ID", "Desc"], [1, "Hmm"]]
-        writer = table_io.get_writer("output.xlsx")
+        writer = table_io.get_writer("tests/output.xlsx")
         writer.save(data)
 
 if __name__ == "__main__":
