@@ -1,6 +1,6 @@
-
+#!/usr/bin/env python2.7
 import tkFileDialog
-import joincsv
+from corow import joincsv
 import os.path
 import sys
 
@@ -22,4 +22,4 @@ if __name__ == '__main__':
     if output_filename:
         joiner = joincsv.RecordJoiner(input_filename)
         joiner.save(output_filename)
-    
+

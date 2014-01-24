@@ -1,4 +1,4 @@
-import table_io
+from corow import table_io
 
 import unittest
 

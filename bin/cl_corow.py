@@ -1,4 +1,5 @@
-import joincsv
+#!/usr/bin/env python2.7
+from corow import joincsv
 import sys
 from argparse import ArgumentParser
 

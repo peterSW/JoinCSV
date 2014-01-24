@@ -1,5 +1,5 @@
 
-from jointable import *
+from corow.jointable import *
 import unittest
 
 

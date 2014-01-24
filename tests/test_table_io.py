@@ -1,6 +1,6 @@
 
-import jointable
-import table_io
+from corow import jointable
+from corow import table_io
 import unittest
 
 class Test(unittest.TestCase):

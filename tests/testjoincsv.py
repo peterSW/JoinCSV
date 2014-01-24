@@ -1,6 +1,6 @@
 
 import unittest
-import joincsv
+from corow import joincsv
 import os
 
 
