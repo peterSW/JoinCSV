@@ -18,9 +18,8 @@ if __name__ == '__main__':
         exit(0)
     
     output_filename = tkFileDialog.asksaveasfilename(filetypes=filetypes, defaultextension=".csv")
-    if not os.path.isfile(output_filename):
-        exit(0)
-        
-    joiner = joincsv.RecordJoiner(input_filename)
-    joiner.save(output_filename)
+    
+    if output_filename:
+        joiner = joincsv.RecordJoiner(input_filename)
+        joiner.save(output_filename)
     
