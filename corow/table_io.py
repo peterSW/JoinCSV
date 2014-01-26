@@ -11,7 +11,7 @@ def CSVTable(filename):
     return csv.reader(inputFile)
 
 
-class XlrdTable():
+class XlrdTable(object):
     """
     A wrapper around a xlrd.Sheet object.
     Provides the needed interface for use with
@@ -29,7 +29,7 @@ class XlrdTable():
              for row in range(self.xlrd_sheet.nrows)])
 
 
-class InputTableFactory():
+class InputTableFactory(object):
     input_table_map = {"xlsx": XlrdTable,
                        "xls": XlrdTable,
                        "csv": CSVTable}
@@ -46,7 +46,7 @@ class InputTableFactory():
         return TableType(filename)
 
 
-class CSVWriter():
+class CSVWriter(object):
     def __init__(self, filename):
         self.filename = filename
 
@@ -58,7 +58,7 @@ class CSVWriter():
                 writer.writerow(row)
 
 
-class XlwtWriter():
+class XlwtWriter(object):
     def __init__(self, filename):
         self.filename = filename
 

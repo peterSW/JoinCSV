@@ -24,7 +24,7 @@ def append_index(field_name, index):
     return ' '.join((field_name, str(index)))
 
 
-class RecordJoiner():
+class RecordJoiner(object):
     def __init__(self, records):
         self.records_by_id = {}
         self.ordered_keys = []

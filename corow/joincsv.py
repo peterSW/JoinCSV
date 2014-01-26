@@ -3,7 +3,7 @@ import jointable
 import table_io
 
 
-class RecordJoiner():
+class RecordJoiner(object):
     def __init__(self, filename):
         self.load(filename)
 
