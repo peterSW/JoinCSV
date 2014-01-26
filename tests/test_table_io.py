@@ -11,8 +11,7 @@ class Test(unittest.TestCase):
         return f.open_input_table("tests/input.xlsx")
 
     def test_row_iteration(self):
-        for row in self.getFirstSheet():
-            pass
+        iter(self.getFirstSheet())
 
     def test_with_jointable(self):
         self.joint_table = jointable.join_records_on_id(self.getFirstSheet())
@@ -22,8 +21,6 @@ class TestCSV(Test):
     def getFirstSheet(self):
         f = table_io.InputTableFactory()
         return f.open_input_table("tests/input.csv")
-
-import xlwt
 
 
 class TestXlwt(unittest.TestCase):

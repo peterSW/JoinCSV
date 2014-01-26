@@ -11,9 +11,6 @@ class TestInputTableFactory(unittest.TestCase):
         input_table = self.factory.open_input_table("tests/input.xlsx")
         self.assertIsInstance(input_table, table_io.XlrdTable)
 
-    def test_csv(self):
-        input_table = self.factory.open_input_table("tests/input.csv")
-
 
 class TestTypeLookup(unittest.TestCase):
 
